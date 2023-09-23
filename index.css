@@ -1,0 +1,22 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+
+    width: 100%;
+    max-width: 500px;
+
+    margin: 0 auto;
+    padding: 50px;
+
+    background: #b4b4e3;
+    text-align: center;
+}
+
+.random-img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
