@@ -1,0 +1,37 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+
+    width: 100%;
+    max-width: 500px;
+
+    margin: 0 auto;
+    padding: 50px;
+
+    background: #b4b4e3;
+    text-align: center;
+}
+
+.element {
+    padding: 10px;
+    background: #7c7cc5;
+
+    font-size: 20px;
+    color: #ffffff;
+    text-transform: uppercase;
+
+    cursor: pointer;
+}
+
+.ghost {
+    padding: 15px;
+    background: #383434;
+    border-radius: 15px;
+
+    font-size: 24px;
+    color: #ffffff;
+    text-transform: uppercase;
+}
