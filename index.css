@@ -20,10 +20,6 @@
     z-index: 1;
 }
 
-.container {
-
-}
-
 .header,
 .footer {
     width: 100%;
@@ -72,7 +68,7 @@
 }
 
 .list__wrapper {
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: flex-start;
     flex-wrap: wrap;
@@ -190,12 +186,6 @@
 .popup__btn {
     text-decoration: underline;
     cursor: pointer;
-}
-
-#mercedes,
-#mazda,
-#mini {
-    display: none;
 }
 
 .show {
