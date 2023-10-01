@@ -10,6 +10,73 @@
 </head>
 <body>
 
-<script src="index.js"/>
+<div id="root" class="wrapper">
+
+    <form id="form" class="form" action="">
+        <div class="form__row">
+            <div class="form__col">
+                <label for="username">Your name</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+
+            <div class="form__col">
+                <label for="surname">Your surname</label>
+                <input type="text" id="surname" name="surname" required>
+            </div>
+        </div>
+
+        <div class="form__row">
+            <div class="form__col">
+                <label for="male">Male</label>
+                <input type="radio" id="male" name="gender" value="male" required>
+            </div>
+
+            <div class="form__col">
+                <label for="female">Female</label>
+                <input type="radio" id="female" name="gender" value="female" required>
+            </div>
+        </div>
+
+        <div class="form__row">
+            <label for="city">City</label>
+            <select name="city" id="city" required>
+                <option value="Kyiv">Kyiv</option>
+                <option value="Madrid">Madrid</option>
+                <option value="Limassol">Limassol</option>
+            </select>
+        </div>
+
+        <div class="form__row">
+            <label for="address">Address</label>
+            <textarea name="address" id="address" cols="20" rows="2" required></textarea>
+        </div>
+
+        <div class="form__row">
+            <div class="form__col">
+                <label for="en">English</label>
+                <input type="checkbox" name="lang" id="en" checked required>
+            </div>
+
+            <div class="form__col">
+                <label for="es">Spanish</label>
+                <input type="checkbox" name="lang" id="es">
+            </div>
+
+            <div class="form__col">
+                <label for="gr">Greek</label>
+                <input type="checkbox" name="lang" id="gr">
+            </div>
+        </div>
+
+        <div class="form__row form__row--center">
+            <button class="form__btn" type="submit">Save</button>
+        </div>
+    </form>
+
+    <div id="result" class="form"></div>
+
+</div>
+
+<script src="index.js"></script>
 </body>
 </html>
