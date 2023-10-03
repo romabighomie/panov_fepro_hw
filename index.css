@@ -1,0 +1,44 @@
+.main-container {
+    height: 50px;
+    width: 300px;
+
+    display: flex;
+    flex-direction: column;
+
+    background-color: #E6E6FAFF;
+}
+
+.smile-container {
+    display: flex;
+    justify-content: space-between;
+
+    width: 100%;
+}
+
+.vote-container {
+    display: flex;
+    justify-content: space-between;
+
+    width: 100%;
+}
+
+.vote-score {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ff0000;
+}
+
+.smile {
+    cursor: pointer;
+}
+
+.buttons-wrapper {
+    display: flex;
+    gap: 15px;
+    margin: 20px 0 0;
+}
+
+.button {
+    min-width: 100px;
+    cursor: pointer;
+}
