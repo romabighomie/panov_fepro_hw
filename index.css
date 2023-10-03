@@ -1,0 +1,14 @@
+#root {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 10px;
+}
+
+#root > * {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    border-bottom: 2px;
+    background: navajowhite;
+}
