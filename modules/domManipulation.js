@@ -1,6 +1,8 @@
+import {domElementList, domElementMenu} from "./vars.js";
+
 // Добавление класса
-export function addClassToElement(element, className) {
-	element.classList.add(className);
+export function addClassToElement(element, ...className) {
+	element.classList.add(...className);
 }
 
 // Добавление нового элемента
@@ -17,6 +19,14 @@ export function setTextContent(element, text) {
 
 // Добавление элементов в меню категории
 export function setMenuCategory(element, carsData) {
+	//Категория меню мои заказы
+	let myOrdersCategory = document.createElement('div');
+	addClassToElement(myOrdersCategory, 'menu__item', 'menu__item--orders');
+	setTextContent(myOrdersCategory, 'My orders');
+	appendElements(domElementMenu, myOrdersCategory);
+	myOrders();
+	
+	// Категории из обьекта
 	carsData.forEach(item => {
 		const name = item.name;
 		const menuItem = document.createElement('div');
@@ -34,6 +44,8 @@ export function setMenuCategory(element, carsData) {
 			});
 			menuItem.classList.add('active');
 			
+			// Смена класса show для листа orders
+			document.getElementById('orders').classList.remove('show');
 			
 			// Смена класса show для листа
 			carsData.forEach(item => {
@@ -71,7 +83,7 @@ export function setListItem(element, carsData) {
 			const modelItemId = model.id;
 			
 			// Добавление элемента
-			const modelItem = model.model = document.createElement('div');
+			const modelItem = document.createElement('div');
 			modelItem.classList.add('list__item');
 			
 			// Добавление заголовка
@@ -145,7 +157,21 @@ export function setItemInfo(element, carsData) {
 			infoBtn.classList.add('info__btn');
 			infoBtn.textContent = 'Buy now';
 			
+			// Вызов поп-апа и добавление инфы в local storage
 			infoBtn.addEventListener('click', () => {
+				let currentTime = new Date().toLocaleTimeString();
+				
+				let orderData = {
+					order: `orderTime_${currentTime}`,
+					name: item.name,
+					model: itemModel.model,
+					year: itemModel.info.year,
+					color: itemModel.info.color,
+					price: itemModel.info.price,
+					time: currentTime,
+				};
+				localStorage.setItem(`orderTime_${currentTime}`, JSON.stringify(orderData));
+				
 				document.querySelector('.popup').classList.add('show');
 			});
 			
@@ -165,25 +191,107 @@ export function setPopup(element) {
 	popupBtn.textContent = 'Close';
 	
 	popupBtn.addEventListener("click", () => {
-		
-		// Ресет кнопки категорий
-		document.querySelectorAll('.menu__item').forEach(item => {
-			item.classList.remove('active');
-		});
-		
-		// Ресет листа
-		document.querySelectorAll('.list__wrapper').forEach(item => {
-			item.classList.remove('show');
-		});
-		
-		// Ресет инфо
-		document.querySelectorAll('.info__item-wrapper').forEach(item => {
-			item.classList.remove('show');
-		});
+		resetClasses()
 		
 		// Ресет поп-ап
 		document.querySelector('.popup').classList.remove('show');
+		location.reload();
 	});
 	
 	appendElements(element, popupText, popupBtn);
+}
+
+export function myOrders() {
+	// Кнопка мои заказы
+	let orderBtn = document.querySelector('.menu__item--orders');
+	
+	// Обертка листа
+	let listWrapper = document.createElement('div');
+	listWrapper.id = 'orders';
+	addClassToElement(listWrapper, 'list__wrapper', 'list__wrapper--orders');
+	
+	// Local Storage
+	let keys = Object.keys(localStorage);
+	let filteredKeys = keys.filter(key => key.startsWith('orderTime_'));
+	
+	filteredKeys.forEach(key => {
+		let orderDataString = localStorage.getItem(key);
+		let orderDataObject = JSON.parse(orderDataString);
+		
+		// Лист айтем
+		let listItem = document.createElement('div');
+		addClassToElement(listItem, 'list__item', 'list__item--order');
+		
+		// Кнопка удаления заказа
+		let listItemBtnCancel = document.createElement('button');
+		setTextContent(listItemBtnCancel, 'Remove from my order');
+		addClassToElement(listItemBtnCancel, 'list__item-cancel');
+		
+		// Лист айтем со свернутым списком
+		let listItemRowInfo = document.createElement('div');
+		addClassToElement(listItemRowInfo, 'list__item-row-info', 'hide');
+		
+		// Лист айтем ряд
+		Object.keys(orderDataObject).forEach(key => {
+			
+			// Создание рядков для свернутого списка
+			if(key !== 'order' && key !== 'time' && key !== 'price') {
+				let listItemRow = document.createElement('div');
+				setTextContent(listItemRow, orderDataObject[key]);
+				addClassToElement(listItemRow, 'list__item-row');
+				
+				appendElements(listItemRowInfo, listItemRow);
+				appendElements(listItem, listItemRowInfo);
+			}
+			
+			// Создание рядков для начального отображения, только время и цена
+			if(key === 'time' || key === 'price') {
+				let listItemRow = document.createElement('div');
+				setTextContent(listItemRow, orderDataObject[key]);
+				addClassToElement(listItemRow, 'list__item-row');
+				appendElements(listItem, listItemRow);
+			}
+			
+			listItem.addEventListener('click', () => {
+				listItemRowInfo.classList.remove('hide');
+			});
+			
+			listItemBtnCancel.setAttribute('data-order', orderDataObject.order);
+		});
+		
+		// Удаление карточки по дата атрибуты из localstorage
+		listItemBtnCancel.addEventListener('click', () => {
+			let dataOrderValue = listItemBtnCancel.getAttribute('data-order');
+			localStorage.removeItem(dataOrderValue);
+			listItemBtnCancel.parentElement.classList.add('hide');
+		});
+		
+		appendElements(listItem, listItemBtnCancel);
+		appendElements(listWrapper, listItem);
+	});
+	
+	appendElements(domElementList, listWrapper);
+	
+	// Открытие моих заказов
+	orderBtn.addEventListener('click', () => {
+		resetClasses();
+		addClassToElement(listWrapper, 'show');
+	});
+}
+
+function resetClasses() {
+	// Ресет кнопки категорий
+	document.querySelectorAll('.menu__item').forEach(item => {
+		item.classList.remove('active');
+	});
+	
+	// Ресет листа
+	document.querySelectorAll('.list__wrapper').forEach(item => {
+		item.classList.remove('show');
+	});
+	
+	// Ресет инфо
+	document.querySelectorAll('.info__item-wrapper').forEach(item => {
+		item.classList.remove('show');
+	});
 }
