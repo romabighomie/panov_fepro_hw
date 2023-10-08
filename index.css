@@ -1,0 +1,11 @@
+.link {
+    display: inline-flex;
+    margin: 20px;
+    padding: 10px 20px;
+
+    background: #7bd57b;
+
+    font-size: 20px;
+    color: #fff;
+    text-decoration: none;
+}
