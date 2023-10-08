@@ -1,5 +1,6 @@
 :root {
     --color-bg-main: #b4b4e3;
+    --color-bg-secondary: #aa83da;
     --color-bg-active: #7ad07d;;
     --color-text-main: #ffffff;
     --color-text-secondary: #303088;
@@ -62,6 +63,11 @@
     cursor: pointer;
 }
 
+.menu__item--orders {
+    margin: 0 0 25px;
+    background: var(--color-bg-secondary);
+}
+
 .list {
     display: flex;
     justify-content: center;
@@ -73,6 +79,12 @@
     align-items: flex-start;
     flex-wrap: wrap;
     gap: 20px;
+}
+
+.list__wrapper--orders {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 35px;
 }
 
 .list__item {
@@ -89,6 +101,13 @@
     box-shadow: 0 0 5px 0 var(--color-bg-main);
 
     text-align: center;
+}
+
+.list__item--order {
+    width: 25%;
+    height: fit-content;
+    gap: 10px;
+    cursor: pointer;
 }
 
 .list__item-header {
@@ -111,6 +130,34 @@
     color: var(--color-text-main);
     text-align: center;
     cursor: pointer;
+}
+
+.list__item-row {
+    width: 100%;
+    padding-bottom: 5px;
+    border-bottom: 2px solid var(--color-bg-secondary);
+    text-align: left;
+}
+
+.list__item-row-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.list__item-cancel {
+    padding: 5px 10px;
+    background: #ff4242;
+
+    color: #ffffff;
+    text-transform: uppercase;
+
+    cursor: pointer;
+}
+
+.list__item-cancel:hover {
+    background: #ce0303;
 }
 
 .info {
@@ -190,6 +237,10 @@
 
 .show {
     display: flex !important;
+}
+
+.hide {
+    display: none !important;
 }
 
 .active {
