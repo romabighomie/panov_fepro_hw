@@ -1,0 +1,22 @@
+.popup {
+  display: flex;
+  align-items: center;
+
+  width: 200px;
+  padding: 13px;
+
+  background: #05a905;
+  color: #ffffff;
+
+  position: absolute;
+  top: 22px;
+  right: 0;
+  z-index: 10;
+
+  transform: translateX(300px);
+  transition: transform 0.5s linear;
+
+  &.show {
+    transform: translateX(0);
+  }
+}

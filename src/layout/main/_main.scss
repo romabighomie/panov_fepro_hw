@@ -1,0 +1,21 @@
+.main {
+  flex: 1 1 auto;
+  padding: 0 0 50px;
+  background: linear-gradient(0deg, #f0defb 0%, #cfcfcf 100%);
+
+  &__category {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 0 30px;
+  }
+
+  &__list {
+
+    &.has-info {
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+    }
+  }
+}

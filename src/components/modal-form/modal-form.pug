@@ -1,0 +1,53 @@
+form.modal-form#form
+
+    .modal-form__row
+        .modal-form__col
+            label(for="username") Name
+            input(type="text" id="username" name="username" required)
+
+        .modal-form__col
+            label(for="surname") Surname
+            input(type="text" id="surname" name="surname" required)
+
+    .modal-form__row
+        label(for="city") City
+        select(name="city" id="city" required)
+            option(value="Kyiv") Kyiv
+            option(value="Madrid") Madrid
+            option(value="Limassol") Limassol
+
+    .modal-form__row
+        label(for="port") Delivery to the seaport
+        select(name="port" id="port" required)
+            option(value="port1") Port #1
+            option(value="port2") Port #2
+            option(value="port3") Port #3
+
+    .modal-form__row
+        label(for="quantity") Quantity
+        select(name="quantity" id="quantity" required)
+            option(value="1") 1
+            option(value="2") 2
+            option(value="3") 3
+            option(value="4") 4
+
+    .modal-form__row.modal-form__row--payments
+        .modal-form__col
+            label(for="visa")
+                svg.modal-form__payment-icon
+                    use(xlink:href="sprite.svg#payments_visa")
+            input(type="radio" id="visa" name="payment" required)
+
+        .modal-form__col
+            label(for="mastercard")
+                svg.modal-form__payment-icon
+                    use(xlink:href="sprite.svg#payments_mastercard")
+            input(type="radio" id="mastercard" name="payment" required)
+
+    .modal-form__row.modal-form__row--comments
+        .modal-form__col.modal-form__col--comments
+            label(for="comments") Comments
+            textarea(name="comments" id="comments" rows="3")
+
+    .modal-form__row.modal-form__row--btn
+        button.modal-form__btn(type="submit") Apply

@@ -1,0 +1,15 @@
+// Global
+@import "styles/global";
+
+// Layout
+@import "layout/header/header";
+@import "layout/main/main";
+@import "layout/footer/footer";
+
+// Components
+@import "components/category/category";
+@import "components/list/list";
+@import "components/info/info";
+@import "components/popup/popup";
+@import "components/orders/orders";
+@import "components/modal-form/modal-form";
