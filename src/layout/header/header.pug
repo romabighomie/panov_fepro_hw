@@ -1,0 +1,21 @@
+header.header
+    .container
+
+        .header__body
+            .header__item
+                .header__title Brand new cars
+
+            .header__logo
+                svg.header__logo-side.header__logo-side--flip
+                    use(xlink:href="sprite.svg#logo-car-side")
+
+                svg.header__logo-center
+                    use(xlink:href="sprite.svg#logo-car")
+
+                svg.header__logo-side
+                    use(xlink:href="sprite.svg#logo-car-side")
+
+            .header__item.header__item--orders
+                .header__orders#cart
+                    svg.header__orders-icon
+                        use(xlink:href="sprite.svg#cart-shopping")

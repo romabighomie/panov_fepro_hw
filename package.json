@@ -1,0 +1,39 @@
+{
+  "type": "module",
+  "name": "hw34",
+  "version": "1.0.0",
+  "description": "home work 34 shop",
+  "main": "index.js",
+  "scripts": {
+    "gulp": "gulp",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/romabighomie/panov_fepro_hw.git"
+  },
+  "author": "Roman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/romabighomie/panov_fepro_hw/issues"
+  },
+  "homepage": "https://github.com/romabighomie/panov_fepro_hw#readme",
+  "devDependencies": {
+    "@babel/preset-env": "^7.23.2",
+    "@rollup/plugin-json": "^6.0.1",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "browser-sync": "^2.29.3",
+    "del": "^7.1.0",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-pug": "^5.0.0",
+    "gulp-sass": "^5.1.0",
+    "gulp-svg-sprite": "^2.0.3",
+    "node-sass": "^9.0.0",
+    "rollup": "^4.1.0"
+  },
+  "dependencies": {
+    "sass": "^1.69.3"
+  }
+}
