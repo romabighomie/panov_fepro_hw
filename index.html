@@ -10,6 +10,30 @@
 </head>
 <body>
 
+<div class="weather">
+
+    <label for="city"></label>
+    <select name="city" id="city">
+        <option value="LVIV">LVIV</option>
+        <option value="KYIV">KYIV</option>
+        <option value="MADRID">MADRID</option>
+        <option value="LIMASSOL">LIMASSOL</option>
+        <option value="MILAN">MILAN</option>
+    </select>
+
+    <div class="weather__row">
+        <img id="icon" class="weather__icon" src="" alt=""/>
+    </div>
+
+    <div id="temp"></div>
+    <div id="pressure"></div>
+    <div id="description"></div>
+    <div id="humidity"></div>
+    <div id="speed"></div>
+    <div id="deg"></div>
+
+</div>
+
 <script src="index.js"></script>
 </body>
 </html>
